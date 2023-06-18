@@ -40,7 +40,7 @@ def register_view(request):
             })
         
         login(request, user)
-        HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('index'))
 
         
     return render(request, 'base/register.html')
