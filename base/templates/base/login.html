@@ -12,17 +12,20 @@
   <section id="login">
     <div class="login__box">
       <div class="mb-5">
+        {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+        {% endif %}
         <h1 class="text-center">Logue</h1>
         <p class="h6 text-center">Para conseguir testar os arquivos e obter o certificado</p>
       </div>
-      <form method="post" class="login__form">
+      <form method="post" action="{% url 'login' %}" class="login__form">
         {% csrf_token %}
         <label class="form-label" for="email">Digite seu e-mail:</label>
         <input class="form-control mb-3" type="email" name="email" id="email"
-          placeholder="Digite seu e-mail">
+          placeholder="Digite seu e-mail" required>
         <label class="form-label" for="password">Digite sua senha:</label>
         <input class="form-control mb-3" type="password" name="password" id="password"
-          placeholder="Digite sua senha">
+          placeholder="Digite sua senha" required>
         <button class="btn btn-success" type="submit">logar</button>
         <button class="btn btn-danger" type="reset">Limpar</button>
       </form>

@@ -14,8 +14,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff9f5;
-  border: 1px solid #dfd6d0;
+  background-color: var(--blue-light);
+  border: 3mm solid var(--blue-dark);
   padding: 10mm 15mm;
 }
 
@@ -88,13 +88,28 @@
 .cert__footer {
   margin-top: auto;
   text-align: center;
-
 }
 
 .cert__info {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cert__escola {
+  width: 60mm;
+}
+.cert__emissor {
+  border-top: 1px solid #000;
+  font-size: 15pt;
+  margin-bottom: 0;
+  font-weight: 600;
 }
 
 .cert__signature {
-  
+  width: 30mm;
+}
+
+.cert__qrcode {
+  width: 50mm;
 }

@@ -12,18 +12,21 @@
   <section id="register">
     <div class="register__box">
       <div class="mb-5">
+        {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+        {% endif %}
         <h1 class="text-center">Registre-se</h1>
         <p class="h6 text-center">Para conseguir testar os arquivos e obter o certificado</p>
       </div>
-      <form method="post" action="{% url reverse('') %}" class="register__form">
+      <form method="post" action="{% url 'register' %}" class="register__form">
         {% csrf_token %}
         <label class="form-label" for="name">Digite seu nome completo:</label>
-        <input class="form-control mb-3" type="text" name="name" id="name" placeholder="Digite seu nome">
+        <input class="form-control mb-3" type="text" name="name" id="name" placeholder="Digite seu nome" required>
         <label class="form-label" for="email">Digite seu e-mail:</label>
-        <input class="form-control mb-3" type="email" name="email" id="email" placeholder="Digite seu e-mail">
+        <input class="form-control mb-3" type="email" name="email" id="email" placeholder="Digite seu e-mail" required>
         <label class="form-label" for="password">Digite uma senha:</label>
         <input class="form-control mb-3" type="password" name="password" id="password"
-          placeholder="Digite sua senha">
+          placeholder="Digite sua senha" required>
         <label class="form-label" for="confirmation">Confirme sua senha:</label>
         <input class="form-control mb-3" type="password" name="confirmation" id="confirmation"
           placeholder="Digite sua senha">

@@ -13,7 +13,7 @@
   <section id="inicio">
     <div class="inicio__box container">
       <div class="inicio__submissions w-100">
-        <h1>Teste suas respostas</h1>
+        <h1 class="text-center mb-4">Teste suas respostas</h1>
         <form class="form">
           <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" value="desafio-1" name="desafio" id="radio-desafio-1" autocomplete="off" checked>
@@ -23,25 +23,25 @@
           </div>
           <div class="mb-3">
             <label for="desafio" class="form-label">Selecione o arquivo do desafio marcado</label>
-            <input class="form-control" type="file" id="file-desafio" name="file-desafio">
+            <input class="form-control" type="file" id="file-desafio" name="file-desafio" required>
           </div>
-          <button class="btn btn-primary px-5" type="submit">Testar</button>
+          <button class="btn btn-primary px-5" type="submit">Submeter</button>
           <button type="reset" class="btn btn-danger">Limpar</button>
         </form>
       </div>
       <div class="inicio__certificate w-100">
-        <h1>Tire seu certificado</h1>
+        <h1 class="text-center mb-4">Tire seu certificado</h1>
         <form class="form">
           <div class="mb-3">
             <label for="desafio-1" class="form-label">Selecione o arquivo do <em>Desafio 1</em></label>
-            <input class="form-control" type="file" id="desafio-1">
+            <input class="form-control" type="file" id="desafio-1" required>
           </div>
           <div class="mb-3">
             <label for="desafio-2" class="form-label">Selecione o arquivo do <em>Desafio 2</em></label>
-            <input class="form-control" type="file" id="desafio-2">
+            <input class="form-control" type="file" id="desafio-2" required>
           </div>
           <div>
-            <button class="btn btn-success" type="submit">Retirar certtificado</button>
+            <button class="btn btn-success" type="submit">Retirar certificado</button>
             <button class="btn btn-danger" type="reset">Limpar</button>
           </div>
         </form>
