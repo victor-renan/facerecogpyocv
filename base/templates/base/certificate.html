@@ -1,3 +1,52 @@
 {% extends 'base/layout.html' %}
+{% load static %}
 {% block navcertificate %}active{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'base/css/certificate.css' %}">
+{% endblock %}
+
+{% block title %}Certificado - FaceRecPyOCV{% endblock %}
+
+{% block body %}
+<main>
+  <section id="certificate">
+    <!-- certificate = cert -->
+    <div class="cert__box">
+      <div class="cert__content">
+        <div class="cert__head">
+          <div class="cert__text">
+            <h1 class="cert__title">VERIFICADO</h1>
+            <p class="h2 cert__sub">Certificado de Conclusão</p>
+          </div>
+          <div class="cert__imgbox">
+            <img class="cert__logo" src="{% static 'base/images/logo-completa.svg' %}" alt="Logo">
+          </div>
+        </div>
+        <hr class="cert__separator">
+        <div class="cert__body">
+          <p class="cert__declaration">Isto certifica que</p>
+          <h1 class="cert__name">Victor Renan Alves de Oliveira</h1>
+          <p class="cert__declaration">Concluiu com sucesso a curso</p>
+          <h2 class="cert__oficina">Reconhecimento Facial com Python e OpenCV</h2>
+          <p class="cert__declaration">em adição à resolução de dois conjuntos de problemas, totalizando uma carga horária de 4 horas.</p>
+        </div>
+        <div class="cert__footer">
+          <div class="cert__info">
+            <div class="cert__escola">
+              <img src="" alt="Logo da escola">
+            </div>
+            <div class="cert__emissor">
+              <img class="cert__signature" src="{% static 'base/images/assinatura.png' %}" alt="Assinatura">
+            </div>
+          </div>
+          <p>Verifique esta certificação em http://127.0.0.1:8000/certificate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="submissions">
+
+  </section>
+</main>
+{% endblock %}

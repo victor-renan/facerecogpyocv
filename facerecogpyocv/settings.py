@@ -72,6 +72,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'base.User'
+
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'

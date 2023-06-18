@@ -1,0 +1,32 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'base/css/login.css' %}">
+{% endblock %}
+
+{% block title %}Registro - FaceRecPyOCV{% endblock %}
+
+{% block body %}
+<main>
+  <section id="login">
+    <div class="login__box">
+      <div class="mb-5">
+        <h1 class="text-center">Logue</h1>
+        <p class="h6 text-center">Para conseguir testar os arquivos e obter o certificado</p>
+      </div>
+      <form method="post" class="login__form">
+        {% csrf_token %}
+        <label class="form-label" for="email">Digite seu e-mail:</label>
+        <input class="form-control mb-3" type="email" name="email" id="email"
+          placeholder="Digite seu e-mail">
+        <label class="form-label" for="password">Digite sua senha:</label>
+        <input class="form-control mb-3" type="password" name="password" id="password"
+          placeholder="Digite sua senha">
+        <button class="btn btn-success" type="submit">logar</button>
+        <button class="btn btn-danger" type="reset">Limpar</button>
+      </form>
+    </div>
+  </section>
+</main>
+{% endblock %}

@@ -1,0 +1,18 @@
+@import url("./constants.css");
+
+
+#register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - var(--nav-h));
+}
+
+.register__box {
+  max-width: 500px;
+  width: 500px;
+}
+
+.register__form {
+  width: 100%;
+}

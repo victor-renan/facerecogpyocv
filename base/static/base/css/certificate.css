@@ -1,0 +1,100 @@
+@import url("./constants.css");
+
+#certificate {
+  height: calc(100vh - var(--nav-h));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-sans);
+}
+
+.cert__box {
+  width: calc(297mm);
+  height: calc(210mm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff9f5;
+  border: 1px solid #dfd6d0;
+  padding: 10mm 15mm;
+}
+
+.cert__content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cert__head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5mm;
+}
+
+.cert__title {
+  font-weight: 800;
+  font-size: 40pt;
+  margin-bottom: 0;
+  color: var(--blue-dark);
+}
+
+.cert__sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 26pt;
+  font-weight: 400;
+  color: var(--blue-primary);
+}
+
+.cert__separator {
+  margin-bottom: 10mm;
+}
+
+.cert__imgbox {
+  margin-left: auto;
+}
+
+.cert__logo {
+  width: 400px;
+  object-fit: cover;
+}
+
+.cert__body {
+  text-align: center;
+  font-family: var(--font-sans);
+}
+
+.cert__declaration {
+  font-size: 18pt;
+  margin-bottom: 2mm;
+  max-width: calc(297mm / 1.5);
+  margin: 0 auto;
+  margin-bottom: 2mm;
+}
+
+.cert__name {
+  font-weight: 700;
+  font-size: 34pt;
+  margin-bottom: 5mm;
+}
+
+.cert__oficina {
+  font-weight: 700;
+  font-size: 26pt;
+  margin-bottom: 5mm;
+}
+
+.cert__footer {
+  margin-top: auto;
+  text-align: center;
+
+}
+
+.cert__info {
+  display: flex;
+}
+
+.cert__signature {
+  
+}

@@ -1,31 +1,47 @@
 {% extends 'base/layout.html' %}
+{% load static %}
 {% block navindex %}active{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'base/css/index.css' %}">
+{% endblock %}
 
 {% block title %}Submissões - FaceRecPyOCV{% endblock %}
 
 {% block body %}
 <main>
   <section id="inicio">
-    <div class="inicio__box">
-      <div class="inicio__submissions"></div>
-      <div class="inicio__certificate">
+    <div class="inicio__box container">
+      <div class="inicio__submissions w-100">
+        <h1>Teste suas respostas</h1>
+        <form class="form">
+          <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" value="desafio-1" name="desafio" id="radio-desafio-1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="radio-desafio-1">Desafio 1</label>
+            <input type="radio" class="btn-check" value="desafio-2" name="desafio" id="radio-desafio-2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="radio-desafio-2">Desafio 2</label>
+          </div>
+          <div class="mb-3">
+            <label for="desafio" class="form-label">Selecione o arquivo do desafio marcado</label>
+            <input class="form-control" type="file" id="file-desafio" name="file-desafio">
+          </div>
+          <button class="btn btn-primary px-5" type="submit">Testar</button>
+          <button type="reset" class="btn btn-danger">Limpar</button>
+        </form>
+      </div>
+      <div class="inicio__certificate w-100">
         <h1>Tire seu certificado</h1>
         <form class="form">
-          {% csrf_token %}
-          <label class="form-label" for="name">Digite seu nome completo:</label>
-          <input class="form-control mb-3" type="text" name="name" id="name">
-          <label class="form-label" for="email">Digite seu e-mail:</label>
-          <input class="form-control mb-3" type="email" name="email" id="email">
-          <div class="custom-file mb-3">
-            <input class="custom-file-input" type="file" name="dasafio-1" id="desafio-1">
-            <label class="custom-file-label" for="desafio-1">Selecione o arquivo do <em>Desafio 1</em></label>
+          <div class="mb-3">
+            <label for="desafio-1" class="form-label">Selecione o arquivo do <em>Desafio 1</em></label>
+            <input class="form-control" type="file" id="desafio-1">
           </div>
-          <div class="custom-file mb-3">
-            <input class="custom-file-input" type="file" name="dasafio-2" id="desafio-2">
-            <label class="custom-file-label" for="desafio-2">Selecione o arquivo do <em>Desafio 2</em></label>
+          <div class="mb-3">
+            <label for="desafio-2" class="form-label">Selecione o arquivo do <em>Desafio 2</em></label>
+            <input class="form-control" type="file" id="desafio-2">
           </div>
           <div>
-            <button class="btn btn-success" type="submit">Enviar</button>
+            <button class="btn btn-success" type="submit">Retirar certtificado</button>
             <button class="btn btn-danger" type="reset">Limpar</button>
           </div>
         </form>
