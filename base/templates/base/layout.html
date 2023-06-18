@@ -27,10 +27,10 @@
       </button>
       <div class="collapse navbar-collapse bg-dark w-100" id="navbarSupportedContent">
         <ul class="navbar-nav w-100">
-          {% if asdf %}
+          {% if user_certificate %}
           <li class="nav-item me-2">
-            <a class="btn btn-outline-primary" rel="noopener noreferrer" target="_blank"
-              href="https://github.com/victor-renan/face-recognition">Meu Certificado</a>
+            <a class="btn btn-outline-primary"
+              href="{% url 'user_certificate' id=user_certificate.get.id %}">Meu Certificado</a>
           </li>
           {% endif %}
           <li class="nav-item">
@@ -52,7 +52,7 @@
               <a class="btn btn-primary" href="{% url 'register' %}">Register</a>
               <a class="btn btn-outline-primary" href="{% url 'login' %}">Login</a>
               {% else %}
-              <a class="text text-decoration-none text-white bold mb-0">{{ request.user.username }}</a>
+              <a class="text text-decoration-none text-white bold mb-0">{{ request.user.name }}</a>
               <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
               {% endif %}
             </div>

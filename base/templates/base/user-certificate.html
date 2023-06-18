@@ -1,0 +1,55 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block navcertificate %}active{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'base/css/certificate.css' %}">
+{% endblock %}
+
+{% block title %}Certificado - FaceRecPyOCV{% endblock %}
+
+{% block body %}
+<main>
+  <section id="certificate">
+    <!-- certificate = cert -->
+    <div class="cert__box">
+      <div class="cert__content">
+        <div class="cert__head">
+          <div class="cert__text">
+            <h1 class="cert__title">VERIFICADO</h1>
+            <p class="h2 cert__sub">Certificado de Conclusão</p>
+          </div>
+          <div class="cert__imgbox">
+            <img class="cert__logo" src="{% static 'base/images/logo-completa.svg' %}" alt="Logo">
+          </div>
+        </div>
+        <hr class="cert__separator">
+        <div class="cert__body">
+          <p class="cert__declaration">Este documento certifica que</p>
+          <h1 class="cert__name">{{ user_certificate.get.user.name }}</h1>
+          <p class="cert__declaration">Concluiu com sucesso a curso</p>
+          <h2 class="cert__oficina">Reconhecimento Facial com Python e OpenCV</h2>
+          <p class="cert__declaration">em adição à resolução de dois conjuntos de problemas, totalizando uma carga horária de 4 horas.</p>
+        </div>
+        <div class="cert__footer">
+          <div class="cert__info">
+            <div class="cert__data">
+              <img class="cert__escola" src="{% static 'base/images/logo-escola.png' %}" alt="Logo da escola">
+            </div>
+            <div class="cert__data">
+              <img class="cert__signature" src="{% static 'base/images/assinatura.png' %}" alt="Assinatura">
+              <p class="cert__emissor">Victor Renan Alves de Oliveira</p>
+              <p class="cert__function">Desenvolvedor e Contribuidor, FaceRecogPyOCV.</p>
+              <p class="cert__emission">Emitido em {{ user_certificate.get.data }}</p>
+            </div>
+          </div>
+          <p>Verifique esta certificação em https://facerecogpyocv.vercel.app{% url 'user_certificate' user_certificate.get.id %}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="submissions">
+
+  </section>
+</main>
+{% endblock %}

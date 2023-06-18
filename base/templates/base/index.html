@@ -11,10 +11,19 @@
 {% block body %}
 <main>
   <section id="inicio">
+    {% if error %}
+    <p class="alert alert-danger radius-0">{{error}}</p>
+    {% endif %}
     <div class="inicio__box container">
       <div class="inicio__submissions w-100">
         <h1 class="text-center mb-4">Teste suas respostas</h1>
-        <form class="form">
+        {% if test_error %}
+        <p class="alert alert-danger">{{ test_error }}</p>
+        {% elif test_success %}
+        <p class="alert alert-success">{{ test_success}}</p>
+        {% endif %}
+        <form class="form" method="post" action="{% url 'index' %}">
+          {% csrf_token %}
           <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" value="desafio-1" name="desafio" id="radio-desafio-1" autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="radio-desafio-1">Desafio 1</label>
@@ -22,8 +31,7 @@
             <label class="btn btn-outline-primary" for="radio-desafio-2">Desafio 2</label>
           </div>
           <div class="mb-3">
-            <label for="desafio" class="form-label">Selecione o arquivo do desafio marcado</label>
-            <input class="form-control" type="file" id="file-desafio" name="file-desafio" required>
+            <textarea class="inicio__textarea form-control" name="file-desafio" required>{{file_desafio}}</textarea>
           </div>
           <button class="btn btn-primary px-5" type="submit">Submeter</button>
           <button type="reset" class="btn btn-danger">Limpar</button>
@@ -31,14 +39,15 @@
       </div>
       <div class="inicio__certificate w-100">
         <h1 class="text-center mb-4">Tire seu certificado</h1>
-        <form class="form">
+        <form class="form" method="post" action="{% url 'index' %}">
+          {% csrf_token %}
           <div class="mb-3">
             <label for="desafio-1" class="form-label">Selecione o arquivo do <em>Desafio 1</em></label>
-            <input class="form-control" type="file" id="desafio-1" required>
+            <input class="form-control" name="desafio-1" type="file" id="desafio-1" required>
           </div>
           <div class="mb-3">
             <label for="desafio-2" class="form-label">Selecione o arquivo do <em>Desafio 2</em></label>
-            <input class="form-control" type="file" id="desafio-2" required>
+            <input class="form-control" name="desafio-2" type="file" id="desafio-2" required>
           </div>
           <div>
             <button class="btn btn-success" type="submit">Retirar certificado</button>

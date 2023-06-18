@@ -75,13 +75,13 @@
 
 .cert__name {
   font-weight: 700;
-  font-size: 34pt;
+  font-size: 32pt;
   margin-bottom: 5mm;
 }
 
 .cert__oficina {
   font-weight: 700;
-  font-size: 26pt;
+  font-size: 24pt;
   margin-bottom: 5mm;
 }
 
@@ -92,7 +92,7 @@
 
 .cert__info {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -100,14 +100,24 @@
   width: 60mm;
 }
 .cert__emissor {
-  border-top: 1px solid #000;
-  font-size: 15pt;
+  border-top: .75mm solid var(--blue-dark);
+  font-size: 14pt;
   margin-bottom: 0;
   font-weight: 600;
 }
 
+.cert__function {
+  margin-bottom: 0;
+}
+
+.cert__emission {
+  font-style: italic;
+}
+
 .cert__signature {
   width: 30mm;
+  object-fit: contain;
+  margin-bottom: -2mm;
 }
 
 .cert__qrcode {

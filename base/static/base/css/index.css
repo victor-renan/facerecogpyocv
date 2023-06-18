@@ -12,3 +12,7 @@
   align-content: center;
   gap: 64px;
 }
+
+.inicio__textarea {
+  min-height: 300px !important;
+}
