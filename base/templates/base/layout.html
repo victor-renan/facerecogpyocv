@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="{% static 'base/lib/bootstrap/bootstrap.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'base/lib/bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'base/lib/normalize/normalize.css' %}">
+  <!--Layout CSS-->
+  <link rel="stylesheet" href="{% static 'base/css/layout.css' %}">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <nav class="navbar px-5 navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">FaceRecPyOCV</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <div class="navbar-nav">
+        <a class="nav-link {% block navindex %}{% endblock %}" href="{% url 'index' %}">Submissões</a>
+        <a class="nav-link disabled {% block navsobre %}{% endblock %}">Sobre a oficina</a>
+        <a class="nav-link {% block navcertificate %}{% endblock %}" href="{% url 'certificate' %}">Certificado</a>
+        <a class="nav-link {% block navgithub %}{% endblock %}" rel="noopener noreferrer" target="_blank" href="https://github.com/victor-renan/face-recognition">Github</a>
+      </div>
+    </div>
+  </nav>
+  {% block body %}
+  {% endblock %}
+</body>
+
+</html>

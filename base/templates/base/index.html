@@ -1,0 +1,36 @@
+{% extends 'base/layout.html' %}
+{% block navindex %}active{% endblock %}
+
+{% block title %}Submissões - FaceRecPyOCV{% endblock %}
+
+{% block body %}
+<main>
+  <section id="inicio">
+    <div class="inicio__box">
+      <div class="inicio__submissions"></div>
+      <div class="inicio__certificate">
+        <h1>Tire seu certificado</h1>
+        <form class="form">
+          {% csrf_token %}
+          <label class="form-label" for="name">Digite seu nome completo:</label>
+          <input class="form-control mb-3" type="text" name="name" id="name">
+          <label class="form-label" for="email">Digite seu e-mail:</label>
+          <input class="form-control mb-3" type="email" name="email" id="email">
+          <div class="custom-file mb-3">
+            <input class="custom-file-input" type="file" name="dasafio-1" id="desafio-1">
+            <label class="custom-file-label" for="desafio-1">Selecione o arquivo do <em>Desafio 1</em></label>
+          </div>
+          <div class="custom-file mb-3">
+            <input class="custom-file-input" type="file" name="dasafio-2" id="desafio-2">
+            <label class="custom-file-label" for="desafio-2">Selecione o arquivo do <em>Desafio 2</em></label>
+          </div>
+          <div>
+            <button class="btn btn-success" type="submit">Enviar</button>
+            <button class="btn btn-danger" type="reset">Limpar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
