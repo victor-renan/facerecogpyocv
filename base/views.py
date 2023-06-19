@@ -4,6 +4,7 @@ from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from . import utils
 import re
 from . import models as mdl
 
@@ -22,23 +23,31 @@ def index_view(request):
         file_desafio = request.POST.get("file-desafio")
 
         if desafio1 and desafio2:
-            if not existing_certificate:
-                certificate = mdl.Certificate.objects.create(
-                    user=mdl.User.objects.get(id=request.user.id),
-                )
-                certificate.save()
-                return HttpResponseRedirect(f'certificates/{certificate.id}')
+            if utils.teste_desafio1(desafio1) and utils.teste_desafio2(desafio2):
+                if not existing_certificate:
+                    certificate = mdl.Certificate.objects.create(
+                        user=mdl.User.objects.get(id=request.user.id),
+                    )
+                    certificate.save()
+                    return HttpResponseRedirect(f'certificates/{certificate.id}')
+                else:
+                    context = {**context,
+                            "error": "Você já emitiu seu certificado!"}
+                    return render(request, 'base/index.html', context)
             else:
-                context = {**context,
-                           "error": "Você já emitiu seu certificado!"}
-                return render(request, 'base/index.html', context)
+                if utils.teste_desafio1(desafio1):
+                    context = {**context, "sub_success_d1": "Parabéns! Os testes do Desafio 1 foram feitos com êxito!"}
+                else:
+                    context = {**context, "sub_error_d1": "Ops! O código do Desafio 1 não está como deveria!"}
+
+                if utils.teste_desafio2(desafio2):
+                    context = {**context, "sub_success_d2": "Parabéns! Os testes do Desafio 2 foram feitos com êxito!"}
+                else:
+                    context = {**context, "sub_error_d2": "Ops! O código do Desafio 2 não está como deveria!"}
 
         if desafio:
             if desafio == "desafio-1":
-                test1 = re.search("import cv2", file_desafio)
-                test2 = re.search("selenium", file_desafio)
-                test3 = re.search("while True:", file_desafio)
-                if test1 and test2 and test3:
+                if utils.teste_desafio1(file_desafio):
                     context = {
                         **context,
                         "test_success": "Parabéns! Você passou no Desafio 1!",
@@ -54,10 +63,7 @@ def index_view(request):
                     return render(request, 'base/index.html', context)
 
             elif desafio == "desafio-2":
-                test1 = re.search("import cv2", file_desafio)
-                test2 = re.search("autentica", file_desafio)
-                test3 = re.search("while True:", file_desafio)
-                if test1 and test2 and test3:
+                if utils.teste_desafio2(file_desafio):
                     context = {
                         **context,
                         "test_success": "Parabéns! Você passou no Desafio 2!",

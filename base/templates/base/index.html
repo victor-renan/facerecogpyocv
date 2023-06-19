@@ -25,13 +25,16 @@
         <form class="form" method="post" action="{% url 'index' %}">
           {% csrf_token %}
           <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" value="desafio-1" name="desafio" id="radio-desafio-1" autocomplete="off" checked>
+            <input type="radio" class="btn-check" value="desafio-1" name="desafio" id="radio-desafio-1"
+              autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="radio-desafio-1">Desafio 1</label>
-            <input type="radio" class="btn-check" value="desafio-2" name="desafio" id="radio-desafio-2" autocomplete="off">
+            <input type="radio" class="btn-check" value="desafio-2" name="desafio" id="radio-desafio-2"
+              autocomplete="off">
             <label class="btn btn-outline-primary" for="radio-desafio-2">Desafio 2</label>
           </div>
           <div class="mb-3">
-            <textarea class="inicio__textarea form-control" name="file-desafio" required>{{file_desafio}}</textarea>
+            <textarea class="inicio__textarea form-control" name="file-desafio" required
+              placeholder="Digite seu código aqui">{{file_desafio}}</textarea>
           </div>
           <button class="btn btn-primary px-5" type="submit">Submeter</button>
           <button type="reset" class="btn btn-danger">Limpar</button>
@@ -39,21 +42,40 @@
       </div>
       <div class="inicio__certificate w-100">
         <h1 class="text-center mb-4">Tire seu certificado</h1>
+        {% if not user_certificate %}
         <form class="form" method="post" action="{% url 'index' %}">
           {% csrf_token %}
           <div class="mb-3">
+            {% if sub_error_d1 %}
+            <p class="alert alert-danger">{{ sub_error_d1 }}</p>
+            {% elif sub_success_d1 %}
+            <p class="alert alert-success">{{ sub_success_d1 }}</p>
+            {% endif %}
             <label for="desafio-1" class="form-label">Selecione o arquivo do <em>Desafio 1</em></label>
-            <input class="form-control" name="desafio-1" type="file" id="desafio-1" required>
+            <textarea class="form-control inicio__textarea__sub" name="desafio-1" id="desafio-1"
+              placeholder="Código do desafio 1" required></textarea>
           </div>
           <div class="mb-3">
+            {% if sub_error_d2 %}
+            <p class="alert alert-danger">{{ sub_error_d2 }}</p>
+            {% elif sub_success_d2 %}
+            <p class="alert alert-success">{{ sub_success_d2 }}</p>
+            {% endif %}
             <label for="desafio-2" class="form-label">Selecione o arquivo do <em>Desafio 2</em></label>
-            <input class="form-control" name="desafio-2" type="file" id="desafio-2" required>
+            <textarea class="form-control inicio__textarea__sub" name="desafio-2" id="desafio-2"
+              placeholder="Código do desafio 2" required></textarea>
           </div>
           <div>
             <button class="btn btn-success" type="submit">Retirar certificado</button>
             <button class="btn btn-danger" type="reset">Limpar</button>
           </div>
         </form>
+        {% else %}
+        <p>Parabéns! Você já emitiu seu certificado! Observe o botão azul no canto superior esquerdo!</p>
+        <a class="btn btn-success" href="{% url 'user_certificate' id=user_certificate.get.id %}">
+          Ver Certificado
+        </a>
+        {% endif %}
       </div>
     </div>
   </section>

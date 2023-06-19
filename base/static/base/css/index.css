@@ -16,3 +16,7 @@
 .inicio__textarea {
   min-height: 300px !important;
 }
+
+.inicio__textarea__sub {
+  min-height: 200px !important;
+}
