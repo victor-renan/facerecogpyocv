@@ -26,7 +26,7 @@
         <hr class="cert__separator">
         <div class="cert__body">
           <p class="cert__declaration">Este documento certifica que</p>
-          <h1 class="cert__name">{{ user_certificate.get.user.name }}</h1>
+          <h1 class="cert__name">{{ certificate.get.user.name }}</h1>
           <p class="cert__declaration">Concluiu com sucesso a curso</p>
           <h2 class="cert__oficina">Reconhecimento Facial com Python e OpenCV</h2>
           <p class="cert__declaration">em adição à resolução de dois conjuntos de problemas, totalizando uma carga horária de 4 horas.</p>
@@ -40,16 +40,18 @@
               <img class="cert__signature" src="{% static 'base/images/assinatura.png' %}" alt="Assinatura">
               <p class="cert__emissor">Victor Renan Alves de Oliveira</p>
               <p class="cert__function">Desenvolvedor e Contribuidor, FaceRecogPyOCV.</p>
-              <p class="cert__emission">Emitido em {{ user_certificate.get.data }}</p>
+              <p class="cert__emission">Emitido em {{ certificate.get.data }}</p>
             </div>
           </div>
-          <p>Verifique esta certificação em https://facerecogpyocv.vercel.app{% url 'user_certificate' user_certificate.get.id %}</p>
+          <p id="link-verify"></p>
         </div>
       </div>
     </div>
   </section>
-  <section id="submissions">
-
-  </section>
+  <script>
+    document.getElementById("link-verify").textContent = `
+      Verifique esta certificação em ${window.location.href}
+    `
+  </script>
 </main>
 {% endblock %}
