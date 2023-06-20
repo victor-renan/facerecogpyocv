@@ -87,7 +87,7 @@ def certificate_view(request):
 
 def user_certificate_view(request, id):
     return render(request, 'base/user-certificate.html', {
-        "user_certificate": mdl.Certificate.objects.filter(id=id),
+        "certificate": mdl.Certificate.objects.filter(id=id),
     })
 
 
