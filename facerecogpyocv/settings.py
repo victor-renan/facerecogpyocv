@@ -51,7 +51,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'facerecogpyocv.wsgi.application'
+WSGI_APPLICATION = 'facerecogpyocv.wsgi.app'
 
 DATABASES = {
     'default': {
